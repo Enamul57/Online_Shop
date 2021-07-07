@@ -4,13 +4,13 @@ import  'firebase/firestore';
 
 
 const config ={
-  apiKey: "AIzaSyA_s8I06ROzepG7W0k3JIzWpsOBb8W7EaY",
-  authDomain: "online-eshop.firebaseapp.com",
-  projectId: "online-eshop",
-  storageBucket: "online-eshop.appspot.com",
-  messagingSenderId: "521432950355",
-  appId: "1:521432950355:web:f59bc3d10a9301cc0348a6",
-  measurementId: "G-196J6DB9L9"
+  apiKey: "AIzaSyAK9CLXh8VQeOVbntC2W7O0084jKaT7HfE",
+  authDomain: "myproject-a31ef.firebaseapp.com",
+  projectId: "myproject-a31ef",
+  storageBucket: "myproject-a31ef.appspot.com",
+  messagingSenderId: "165965704868",
+  appId: "1:165965704868:web:e62e5ca12c3ef1f253c031",
+  measurementId: "G-GJDJE4X3DF"
 };
 firebase.initializeApp(config);
 
