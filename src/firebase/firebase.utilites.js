@@ -4,13 +4,13 @@ import  'firebase/firestore';
 
 
 const config ={
-  apiKey: "AIzaSyAK9CLXh8VQeOVbntC2W7O0084jKaT7HfE",
-  authDomain: "myproject-a31ef.firebaseapp.com",
-  projectId: "myproject-a31ef",
-  storageBucket: "myproject-a31ef.appspot.com",
-  messagingSenderId: "165965704868",
-  appId: "1:165965704868:web:e62e5ca12c3ef1f253c031",
-  measurementId: "G-GJDJE4X3DF"
+  apiKey: "AIzaSyA4iWoQSURSVaMG30dcmtf2Ek2QR6bnBus",
+  authDomain: "letsroll-efd98.firebaseapp.com",
+  projectId: "letsroll-efd98",
+  storageBucket: "letsroll-efd98.appspot.com",
+  messagingSenderId: "348662637936",
+  appId: "1:348662637936:web:3795f72dec590851f3dbb5",
+  measurementId: "G-MPSR6P0JTY"
 };
 firebase.initializeApp(config);
 
