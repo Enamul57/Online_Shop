@@ -5,18 +5,18 @@ import ShopPage from './Pages/Shop/shop.component';
 import {Switch,Route,Redirect} from 'react-router-dom';
 import Header from "./Components/Header/header.component";
 import SigninSignup from "./Pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
-import {auth,userProfileDocument} from '../src/firebase/firebase.utilites';
+import {auth,userProfileDocument,addToFireBase} from '../src/firebase/firebase.utilites';
 import {connect} from "react-redux";
 import {setCurrentUser} from "./Redux/user/user.action";
 import { createStructuredSelector } from 'reselect';
 import {selectCurrentUser} from "./Redux/user/user.selector";
 import CheckoutPage from './Pages/Checkout/checkout.component';
-
+import {selectCollectionPreview} from "../src/Redux/shop/shop.selector";
 class App extends React.Component {
   
   unsubscribeFromAuth = null;
   componentDidMount(){
-    const {setCurrentUser} = this.props;
+    const {setCurrentUser,CollectionArray} = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged( async userAuth =>{
       if(userAuth){
         const userRef = await userProfileDocument(userAuth);
@@ -31,7 +31,10 @@ class App extends React.Component {
       }
       
       setCurrentUser(userAuth);
-      
+      // addCollectionAndDocuments('collection',CollectionArray.map(({title,items})=>({title,items})));
+        addToFireBase('collection',CollectionArray.map(({title,items})=>({title,items})));
+
+
     });
   }
   componentWillUnmount(){
@@ -57,7 +60,8 @@ class App extends React.Component {
   }
 }
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  CollectionArray: selectCollectionPreview
 })
 const mapDispatchToProps = dispatch =>({
   setCurrentUser : user => dispatch(setCurrentUser(user))

@@ -4,13 +4,13 @@ import  'firebase/firestore';
 
 
 const config ={
-  apiKey: "AIzaSyA4iWoQSURSVaMG30dcmtf2Ek2QR6bnBus",
-  authDomain: "letsroll-efd98.firebaseapp.com",
-  projectId: "letsroll-efd98",
-  storageBucket: "letsroll-efd98.appspot.com",
-  messagingSenderId: "348662637936",
-  appId: "1:348662637936:web:3795f72dec590851f3dbb5",
-  measurementId: "G-MPSR6P0JTY"
+  apiKey: "AIzaSyAhTwB3BtKKnD8_uuq3uG_NR9t-KM2gAjU",
+  authDomain: "gitprojectreact.firebaseapp.com",
+  projectId: "gitprojectreact",
+  storageBucket: "gitprojectreact.appspot.com",
+  messagingSenderId: "439138185366",
+  appId: "1:439138185366:web:6092a166081affea3a92b7",
+  measurementId: "G-TLM3GDJY2W"
 };
 firebase.initializeApp(config);
 
@@ -38,6 +38,59 @@ export const userProfileDocument =  async (userAuth,additionalData) => {
   return userRef;
 }
 
+// export const addCollectionAndDocuments = async (CollectionKey, ObjData) =>{
+//     const collectionRef = firestore.collection(CollectionKey);
+//     console.log(collectionRef);
+//     const batch = firestore.batch();
+//     ObjData.forEach(obj=>{
+//         const newDocRef = collectionRef.doc(obj.title);
+//         console.log(newDocRef);
+//         batch.set(newDocRef,obj);
+//     });
+//     return await batch.commit();
+// }
+// export const ConvertCollectionToArray = (collection)=>{
+//     const transformedCollection = collection.docs.map( doc=>{
+//         const {title,items} = doc.data();
+//         return {
+//           routeName: encodeURI(title.toLowerCase()),
+//           id: doc.id,
+//           title,
+//           items
+//         }
+//       }
+//     );
+
+//     console.log(transformedCollection);
+// }
+
+export const addToFireBase = async (collectionKey,ObjData)=>{
+    const collectionRef = firestore.collection(collectionKey);
+    const batch = firestore.batch();
+    ObjData.forEach(obj=>{
+      const collectionDoc = collectionRef.doc();
+      console.log(collectionDoc);
+      batch.set(collectionDoc,obj);
+    });
+    return await batch.commit();
+}
+export const ConvertCollectiontoArray= (collection)=>{
+    console.log(collection.docs);
+    const transformedCollection = collection.docs.map(  doc=>{
+        const {title,items} = doc.data();
+        return {
+          routeName :encodeURI(title.toLowerCase()),
+          id : doc.id,
+          title,
+          items
+        }
+    }  );
+    return transformedCollection.reduce((total,currentValue)=>{
+        total[currentValue.title.toLowerCase()] = currentValue;
+        return total;
+    },{});
+    console.log(transformedCollection);
+}
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

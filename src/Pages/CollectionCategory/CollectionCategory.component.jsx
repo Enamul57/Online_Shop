@@ -14,7 +14,9 @@ const CollectionCategory = ({collection})=>
                 <div className ='items'>
                     {
                         items.map(item=> <CollectionItem key={item.id} item ={item}/>)
+                        
                     }
+                    {console.log(items)}
                 </div>
             </div>
         )
