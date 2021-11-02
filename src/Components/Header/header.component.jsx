@@ -17,9 +17,6 @@ const Header = ({currentUser,hidden}) =>(
             <LinkOptions to="/shop">
                 Shop
             </LinkOptions>
-            <LinkOptions to="/contact">
-                Contact
-            </LinkOptions>
             {
                 currentUser ?
                ( <LinkOptions as ='div' onClick={()=>auth.signOut()}>
